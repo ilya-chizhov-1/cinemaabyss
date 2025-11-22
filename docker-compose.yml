@@ -1,11 +1,5 @@
 version: "3.8"
 
-# Автоматическая очистка buildx контейнеров:
-# Перед сборкой запустите: ./scripts/cleanup-buildx.sh
-# Или используйте: docker-compose build --build-arg CLEANUP_BUILDX=true
-# Для автоматической очистки перед каждой сборкой добавьте в .bashrc/.zshrc:
-# alias docker-compose-build='./scripts/cleanup-buildx.sh && docker-compose build'
-
 services:
   # PostgreSQL Database
   postgres:
@@ -89,21 +83,20 @@ services:
       - cinemaabyss-network
 
   # Events Microservice
-  # events-service:
-  #   build:
-  #     context: ./src/microservices/events
-  #     dockerfile: Dockerfile
-  #   container_name: cinemaabyss-events-service
-  #   depends_on:
-  #     - postgres
-  #     - kafka
-  #   ports:
-  #     - "8082:8082"
-  #   environment:
-  #     PORT: 8082
-  #     KAFKA_BROKERS: kafka:9092
-  #   networks:
-  #     - cinemaabyss-network
+  events-service:
+    build:
+      context: ./src/microservices/events
+      dockerfile: Dockerfile
+    container_name: cinemaabyss-events-service
+    depends_on:
+      - kafka
+    ports:
+      - "8082:8082"
+    environment:
+      PORT: 8082
+      KAFKA_BROKERS: kafka:9092
+    networks:
+      - cinemaabyss-network
 
   # Proxy Service (API Gateway)
   proxy-service:
@@ -114,7 +107,7 @@ services:
     depends_on:
       - monolith
       - movies-service
-      # - events-service
+      - events-service
     ports:
       - "8000:8000"
     environment:
