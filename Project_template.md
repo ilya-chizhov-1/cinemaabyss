@@ -60,7 +60,7 @@ proxy-service:
 Необходимые тесты для проверки этого API вызываются при запуске npm run test:local из папки tests/postman
 Приложите скриншот тестов и скриншот состояния топиков Kafka из UI http://localhost:8090
 
-- Приложил в комментариях к пулл реквесту
+https://github.com/ilya-chizhov-1/cinemaabyss/pull/1#issuecomment-3589051361
 
 # Задание 3
 
@@ -310,7 +310,7 @@ minikube tunnel
 
 Добавьте сюда скриншота вывода при вызове https://cinemaabyss.example.com/api/movies и скриншот вывода event-service после вызова тестов.
 
-- Приложил в комментариях к пулл реквесту
+https://github.com/ilya-chizhov-1/cinemaabyss/pull/1#issuecomment-3589054391
 
 # Задание 4
 
@@ -391,6 +391,8 @@ minikube tunnel
 Потом вызовите
 https://cinemaabyss.example.com/api/movies
 и приложите скриншот развертывания helm и вывода https://cinemaabyss.example.com/api/movies
+
+https://github.com/ilya-chizhov-1/cinemaabyss/pull/1#issuecomment-3589299520
 
 ## Удаляем все
 
