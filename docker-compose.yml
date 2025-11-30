@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # PostgreSQL Database
@@ -89,7 +89,6 @@ services:
       dockerfile: Dockerfile
     container_name: cinemaabyss-events-service
     depends_on:
-      - postgres
       - kafka
     ports:
       - "8082:8082"
@@ -115,7 +114,7 @@ services:
       PORT: 8000
       MONOLITH_URL: http://monolith:8080
       MOVIES_SERVICE_URL: http://movies-service:8081
-      EVENTS_SERVICE_URL: http://events-service:8082
+      # EVENTS_SERVICE_URL: http://events-service:8082
       GRADUAL_MIGRATION: "true"
       MOVIES_MIGRATION_PERCENT: "50"
     networks:
